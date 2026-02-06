@@ -32,87 +32,100 @@
 // //usestate->state management
 // //syntax
 
-import React, { useState } from "react";
-import Button from "./components/Button";
-import AddUser from "./components/AddUser";
-import DisplayUser from "./components/DisplayUser";
+// import React, { useState } from "react";
+// import Button from "./components/Button";
+// import AddUser from "./components/AddUser";
+// import DisplayUser from "./components/DisplayUser";
 
-const App = () => {
+// const App = () => {
  
-  const [allUsers, setallUsers] = useState([]);
+//   const [allUsers, setallUsers] = useState([]);
   
 
-  // [
-  //   {},{},{},{}
-  // ]
+//   // [
+//   //   {},{},{},{}
+//   // ]
 
-  // const trackFirst=(event)=>{
-  //   console.log(event.target.value)
-  //   setfirstName(event.target.value)
-  // }
+//   // const trackFirst=(event)=>{
+//   //   console.log(event.target.value)
+//   //   setfirstName(event.target.value)
+//   // }
 
-  const submitUser = (user) => {
-    // let user = {
-    //   firstName,
-    //   lastName,
-    //   email,
-    //   image,
-    // };
+//   const submitUser = (user) => {
+//     // let user = {
+//     //   firstName,
+//     //   lastName,
+//     //   email,
+//     //   image,
+//     // };
 
-    console.log(user);
+//     console.log(user);
 
-    let food = ["eba", "semo", "amala"];
-    let newFood = [...food, "rice", "spag"];
+//     let food = ["eba", "semo", "amala"];
+//     let newFood = [...food, "rice", "spag"];
 
-    setallUsers([...allUsers, user]); //a copy of the former values and the incoming one.
-  };
+//     setallUsers([...allUsers, user]); //a copy of the former values and the incoming one.
+//   };
 
-  const deleteUser=(index)=>{
-    console.log(index);
+//   const deleteUser=(index)=>{
+//     console.log(index);
     
-    const newAllUsers= [...allUsers]
+//     const newAllUsers= [...allUsers]
 
-    newAllUsers.splice(index, 1)
+//     newAllUsers.splice(index, 1)
 
-    setallUsers(newAllUsers)
-  }
-
-
-  const editUser=(index, user)=>{
-    // let newData =
-    // {
-    //   firstName,
-    //   lastName,
-    //   email,
-    //   image
-    // }
-    const newAllUsers=[...allUsers]
-    newAllUsers.splice(index,1, user)
-    setallUsers(newAllUsers)
-  }
-
-  // const shoutHello=()=>{
-  //   alert(`hello `)
-  // }
-  return (
-    <>
+//     setallUsers(newAllUsers)
+//   }
 
 
+//   const editUser=(index, user)=>{
+//     // let newData =
+//     // {
+//     //   firstName,
+//     //   lastName,
+//     //   email,
+//     //   image
+//     // }
+//     const newAllUsers=[...allUsers]
+//     newAllUsers.splice(index,1, user)
+//     setallUsers(newAllUsers)
+//   }
+
+//   // const shoutHello=()=>{
+//   //   alert(`hello `)
+//   // }
+//   return (
+//     <>
 
 
-    {/* <Button title="GO" color="btn-success"  func={shoutHello}/>
-    <Button title="STOP" color="btn-danger"/>
-    <Button title="WAIT" color="btn-warning"/>
-    <Button title="DARK" color="btn-dark"/> */}
-     <AddUser addTheUser={submitUser}/>
 
-      <hr />
+
+//     {/* <Button title="GO" color="btn-success"  func={shoutHello}/>
+//     <Button title="STOP" color="btn-danger"/>
+//     <Button title="WAIT" color="btn-warning"/>
+//     <Button title="DARK" color="btn-dark"/> */}
+//      <AddUser addTheUser={submitUser}/>
+
+//       <hr />
 
       
 
-     <DisplayUser allUsers={allUsers} editUser={editUser} deleteUser={deleteUser}/>
-    </>
-  );
-};
+//      <DisplayUser allUsers={allUsers} editUser={editUser} deleteUser={deleteUser}/>
+//     </>
+//   );
+// };
 
-export default App;
+// export default App;
+
+
+import React from 'react'
+
+const App = () => {
+  return (
+    <>
+      
+    </>
+  )
+}
+
+export default App
