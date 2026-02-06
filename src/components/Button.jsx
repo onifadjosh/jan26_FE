@@ -1,16 +1,16 @@
 import React from 'react'
 
-const Button = () => {
+const Button = ({title, color, func}) => {
+  // console.log(props);
+  
 
   let design={backgroundColor:"red", border:"1px solid blue",}
   // let value = 3+3
 
-  const shoutHello=()=>{
-    alert(`hello `)
-  }
+  
   return (
   
-    <button style={design} onClick={()=>shoutHello()}>{"you"}</button>
+    <button className={`btn ${color}`} onClick={func}>{title}</button>
 
   )
 }

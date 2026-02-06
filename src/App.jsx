@@ -33,13 +33,14 @@
 // //syntax
 
 import React, { useState } from "react";
+import Button from "./components/Button";
+import AddUser from "./components/AddUser";
+import DisplayUser from "./components/DisplayUser";
 
 const App = () => {
-  const [firstName, setfirstName] = useState("");
-  const [lastName, setlastName] = useState("");
-  const [email, setemail] = useState("");
-  const [image, setimage] = useState("");
+ 
   const [allUsers, setallUsers] = useState([]);
+  
 
   // [
   //   {},{},{},{}
@@ -50,13 +51,13 @@ const App = () => {
   //   setfirstName(event.target.value)
   // }
 
-  const submitUser = () => {
-    let user = {
-      firstName,
-      lastName,
-      email,
-      image,
-    };
+  const submitUser = (user) => {
+    // let user = {
+    //   firstName,
+    //   lastName,
+    //   email,
+    //   image,
+    // };
 
     console.log(user);
 
@@ -66,52 +67,50 @@ const App = () => {
     setallUsers([...allUsers, user]); //a copy of the former values and the incoming one.
   };
 
+  const deleteUser=(index)=>{
+    console.log(index);
+    
+    const newAllUsers= [...allUsers]
+
+    newAllUsers.splice(index, 1)
+
+    setallUsers(newAllUsers)
+  }
+
+
+  const editUser=(index, user)=>{
+    // let newData =
+    // {
+    //   firstName,
+    //   lastName,
+    //   email,
+    //   image
+    // }
+    const newAllUsers=[...allUsers]
+    newAllUsers.splice(index,1, user)
+    setallUsers(newAllUsers)
+  }
+
+  // const shoutHello=()=>{
+  //   alert(`hello `)
+  // }
   return (
     <>
-      <input
-        type="text"
-        placeholder="first name"
-        onChange={(e) => setfirstName(e.target.value)}
-      />
 
-      <input
-        type="text"
-        placeholder="last name"
-        onChange={(e) => setlastName(e.target.value)}
-      />
 
-      <input
-        type="text"
-        placeholder="Password"
-        onChange={(e) => setemail(e.target.value)}
-      />
-      <input
-        type="text"
-        placeholder="Image"
-        onChange={(e) => setimage(e.target.value)}
-      />
 
-      <button onClick={submitUser}>Submit User</button>
+
+    {/* <Button title="GO" color="btn-success"  func={shoutHello}/>
+    <Button title="STOP" color="btn-danger"/>
+    <Button title="WAIT" color="btn-warning"/>
+    <Button title="DARK" color="btn-dark"/> */}
+     <AddUser addTheUser={submitUser}/>
 
       <hr />
 
-      <div className="d-flex gap-3 flex-wrap">
-      {allUsers.map((user, index) => (
-        <div className="card" style={{width: "18rem"}}  key={index}>
-          <img src={user.image} className="card-img-top" alt="..." />
-          <div className="card-body">
-            <h5 className="card-title">{user.firstName+" "+user.lastName}</h5>
-            <p className="card-text">
-              {user.email}
-            </p>
-            <div>
-              <button className="btn btn-primary">Edit</button>
-              <button className="btn btn-danger">Delete</button>
-            </div>
-          </div>
-        </div>
-      ))}
-      </div>
+      
+
+     <DisplayUser allUsers={allUsers} editUser={editUser} deleteUser={deleteUser}/>
     </>
   );
 };
