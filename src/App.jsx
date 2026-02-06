@@ -119,11 +119,15 @@
 
 
 import React from 'react'
-import { Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import Home from './pages/Home'
 import Contact from './pages/Contact'
 import About from './pages/About'
 import NavBar from './components/NavBar'
+import NotFound from './pages/NotFound'
+import Profile from './pages/Profile'
+import Layout from './pages/Layout'
+import Settings from './pages/Settings'
 
 
 const App = () => {
@@ -135,6 +139,25 @@ const App = () => {
             <Route path='/contact' element={<Contact/>}/>
 
             <Route path='/about' element={<About/>}/>
+
+            {/* programattic redirection */}
+            <Route path='/me' element={<Navigate to={'/about'}/>}/> 
+            <Route path='/sp-contact' element={<Navigate to={'/contact'}/>}/>
+
+            {/* dynamic routing */}
+            <Route path='/profile/:username' element={<Profile/>} />
+
+
+            <Route path='/layout' element={<Layout/>}>
+              {/* children routes for the layout */}
+              <Route path='settings' element={<Settings/>}/>
+            </Route>
+
+            
+            
+            
+            {/*wildcard routing */}
+            <Route path='*' element={<NotFound/>}/>
         </Routes>
     </>
   )
