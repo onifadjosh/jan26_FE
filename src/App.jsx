@@ -129,6 +129,7 @@ import Profile from './pages/Profile'
 import Layout from './pages/Layout'
 import Settings from './pages/Settings'
 import Effect from './pages/Effect'
+import Formikk from './pages/Formikk'
 
 
 const App = () => {
@@ -141,6 +142,7 @@ const App = () => {
 
             <Route path='/about' element={<About/>}/>
             <Route path='/effect' element={<Effect/>}/>
+            <Route path='/formikk' element={<Formikk/>}/>
 
             {/* programattic redirection */}
             <Route path='/me' element={<Navigate to={'/about'}/>}/> 
