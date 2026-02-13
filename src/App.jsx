@@ -128,6 +128,7 @@ import NotFound from './pages/NotFound'
 import Profile from './pages/Profile'
 import Layout from './pages/Layout'
 import Settings from './pages/Settings'
+import Effect from './pages/Effect'
 
 
 const App = () => {
@@ -139,6 +140,7 @@ const App = () => {
             <Route path='/contact' element={<Contact/>}/>
 
             <Route path='/about' element={<About/>}/>
+            <Route path='/effect' element={<Effect/>}/>
 
             {/* programattic redirection */}
             <Route path='/me' element={<Navigate to={'/about'}/>}/> 
