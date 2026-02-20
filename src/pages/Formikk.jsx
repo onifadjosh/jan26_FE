@@ -1,8 +1,10 @@
 import React from 'react'
 import { useFormik } from 'formik'
 import * as yup from "yup"
+import { useSelector } from 'react-redux'
 
 const Formikk = () => {
+    const count = useSelector((state)=>state.count)
     let formik = useFormik({
         initialValues:{
            firstname:"",
@@ -31,6 +33,8 @@ const Formikk = () => {
     
   return (
     <div>
+
+        <h1>{count}</h1>
         <input type="text" placeholder='firstname'  name='firstname' onBlur={formik.handleBlur} onChange={formik.handleChange}/>
         {(formik.touched.firstname&&formik.errors.firstname)&&<small className='text-danger'>{formik.errors.firstname}</small>}
         <br /><br />
