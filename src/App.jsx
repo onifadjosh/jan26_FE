@@ -38,9 +38,8 @@
 // import DisplayUser from "./components/DisplayUser";
 
 // const App = () => {
- 
+
 //   const [allUsers, setallUsers] = useState([]);
-  
 
 //   // [
 //   //   {},{},{},{}
@@ -69,14 +68,13 @@
 
 //   const deleteUser=(index)=>{
 //     console.log(index);
-    
+
 //     const newAllUsers= [...allUsers]
 
 //     newAllUsers.splice(index, 1)
 
 //     setallUsers(newAllUsers)
 //   }
-
 
 //   const editUser=(index, user)=>{
 //     // let newData =
@@ -97,9 +95,6 @@
 //   return (
 //     <>
 
-
-
-
 //     {/* <Button title="GO" color="btn-success"  func={shoutHello}/>
 //     <Button title="STOP" color="btn-danger"/>
 //     <Button title="WAIT" color="btn-warning"/>
@@ -108,8 +103,6 @@
 
 //       <hr />
 
-      
-
 //      <DisplayUser allUsers={allUsers} editUser={editUser} deleteUser={deleteUser}/>
 //     </>
 //   );
@@ -117,54 +110,57 @@
 
 // export default App;
 
-
-import React from 'react'
-import { Navigate, Route, Routes } from 'react-router-dom'
-import Home from './pages/Home'
-import Contact from './pages/Contact'
-import About from './pages/About'
-import NavBar from './components/NavBar'
-import NotFound from './pages/NotFound'
-import Profile from './pages/Profile'
-import Layout from './pages/Layout'
-import Settings from './pages/Settings'
-import Effect from './pages/Effect'
-import Formikk from './pages/Formikk'
-
+import React from "react";
+import { Navigate, Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import Contact from "./pages/Contact";
+import About from "./pages/About";
+import NavBar from "./components/NavBar";
+import NotFound from "./pages/NotFound";
+import Profile from "./pages/Profile";
+import Layout from "./pages/Layout";
+import Settings from "./pages/Settings";
+import Effect from "./pages/Effect";
+import Formikk from "./pages/Formikk";
+import LoginPage from "./pages/Login";
+import Authguard from "./auth/Authguard";
 
 const App = () => {
+  const token = localStorage.getItem("token");
+
+  const isAuth = localStorage.getItem("token");
   return (
     <>
-    <NavBar/>
-        <Routes>
-            <Route index element={<Home></Home>}/>
-            <Route path='/contact' element={<Contact/>}/>
+      <NavBar />
+      <Routes>
+        <Route index element={<Home></Home>} />
+        <Route path="/login" element={<LoginPage />} />
 
-            <Route path='/about' element={<About/>}/>
-            <Route path='/effect' element={<Effect/>}/>
-            <Route path='/formikk' element={<Formikk/>}/>
+        <Route  element={<Authguard isAuth={isAuth}/>}>
+          <Route path="/contact" element={<Contact />} />
 
-            {/* programattic redirection */}
-            <Route path='/me' element={<Navigate to={'/about'}/>}/> 
-            <Route path='/sp-contact' element={<Navigate to={'/contact'}/>}/>
+          <Route path="/about" element={<About />} />
+          <Route path="/effect" element={<Effect />} />
+          <Route path="/formikk" element={<Formikk />} />
 
-            {/* dynamic routing */}
-            <Route path='/profile/:username' element={<Profile/>} />
+          {/* programattic redirection */}
+          <Route path="/me" element={<Navigate to={"/about"} />} />
+          <Route path="/sp-contact" element={<Navigate to={"/contact"} />} />
 
+          {/* dynamic routing */}
+          <Route path="/profile/:username" element={<Profile />} />
 
-            <Route path='/layout' element={<Layout/>}>
-              {/* children routes for the layout */}
-              <Route path='settings' element={<Settings/>}/>
-            </Route>
+          <Route path="/layout" element={<Layout />}>
+            {/* children routes for the layout */}
+            <Route path="settings" element={<Settings />} />
+          </Route>
+        </Route>
 
-            
-            
-            
-            {/*wildcard routing */}
-            <Route path='*' element={<NotFound/>}/>
-        </Routes>
+        {/*wildcard routing */}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
